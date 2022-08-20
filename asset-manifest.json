@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/GitHub-Battle/static/css/main.357c8e0b.css",
+    "main.js": "/GitHub-Battle/static/js/main.13925446.js",
+    "static/js/787.c1856592.chunk.js": "/GitHub-Battle/static/js/787.c1856592.chunk.js",
+    "index.html": "/GitHub-Battle/index.html",
+    "main.357c8e0b.css.map": "/GitHub-Battle/static/css/main.357c8e0b.css.map",
+    "main.13925446.js.map": "/GitHub-Battle/static/js/main.13925446.js.map",
+    "787.c1856592.chunk.js.map": "/GitHub-Battle/static/js/787.c1856592.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.357c8e0b.css",
+    "static/js/main.13925446.js"
+  ]
+}
