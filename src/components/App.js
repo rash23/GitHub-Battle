@@ -1,5 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-
+import {HashRouter, Routes, Route} from "react-router-dom"
 import Home from "./Home";
 import Popular from "./Popular";
 import Error from "./Error";
@@ -10,7 +9,7 @@ import Nav from "./Nav";
 const App = () => {
     return (
         <div className="container">
-            <BrowserRouter>
+            <HashRouter basename={"/"}>
                 <Nav/>
                 <Routes>
                     <Route path="/" element={<Home/>}></Route>
@@ -18,7 +17,7 @@ const App = () => {
                     <Route path="/battle" element={<Battle/>}></Route>
                     <Route path="*" element={<Error/>}></Route>
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </div>
     );
 }
