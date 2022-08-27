@@ -33,6 +33,7 @@ li {
     display: block;
     padding: 10px 0;
     margin: 10px auto;
+    cursor: pointer;
 }
 
 .button:hover {
@@ -44,12 +45,21 @@ li {
     transform: translateY(1px);
 }
 
+.button[disabled] {
+    background: grey;
+}
+
 .avatar {
     width: 150px;
     border-radius: 50%;
 }
 
 .space-list-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 6px;
     margin-bottom: 7px;
 }
 
@@ -132,12 +142,28 @@ li {
     font-weight: 200;
 }
 
+.winner{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: green;
+}
+
+.loser{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+}
+
 .reset {
-    border: none;
+    padding: 8px;
+    border: 1px solid #d0021b;
     background: transparent;
     color: #d0021b;
     display: block;
-    width: 100%;
+    width: 20%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -147,6 +173,14 @@ li {
 
 .selected {
     color: #d0021b;
+}
+
+.username{
+    color: #d0021b;
+}
+.score{
+    text-align: center;
+    color: teal;
 }
 
 .loader {

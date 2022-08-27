@@ -1,10 +1,10 @@
 import {useState, useEffect} from "react";
-import {fetchPopularRepos} from "../utils/api";
+import {fetchPopularRepos} from "../../utils/api";
 import SelectedLanguages from "./SelectedLanguages";
 import Repos from "./Repos";
-import Loader from "./Loader";
+import Loader from "../General/Loader";
 import {useSearchParams} from "react-router-dom"
-import useDebounce from "../hooks/useDebounce";
+import useDebounce from "../../hooks/useDebounce";
 
 const Popular = () => {
     const [searchParams, setSearchParams] = useSearchParams();
