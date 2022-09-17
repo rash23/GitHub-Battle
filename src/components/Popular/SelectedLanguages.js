@@ -1,22 +1,48 @@
-import {memo, } from "react";
+import { memo, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
+import { setSelectedLanguage } from '../../redux/Popular/popular.actions'
+import { fetchPopularRepos } from '../../redux/Popular/popular.thunk'
 
-const languages = ["All", "Javascript", "Python", "Java", "Ruby", "Scala"]
-const SelectedLanguages = memo((props) => {
+const languages = ['All', 'Javascript', 'Python', 'Java', 'Ruby', 'Scala']
+const SelectedLanguages = memo(
+	(props) => {
+		const dispatch = useDispatch()
+		const [searchParams, setSearchParams] = useSearchParams()
+		const queryParams = searchParams.get('language') || 'all'
 
-    return <ul className="languages">
-        {languages.map((language, index) => {
+		const selectedLanguage = useSelector((state) => state.popularReducer.selectedLanguage)
 
-            return <li key={index}
-                       className={language === props.selectedLanguage || language.toLowerCase() === props.queryParams  ? "selected" : null}
-                       onClick={() => {
-                           props.setSearchParams({language: language.toLowerCase()})
-                           props.selectedLanguageHandler(language)
-                       }
-                       }>{language}
-            </li>
-        })}
-    </ul>
-}, (prevProps, nextProps) => {
-    return prevProps.selectedLanguage === nextProps.selectedLanguage;
-})
-export default SelectedLanguages;
+		useEffect(() => {
+			dispatch(fetchPopularRepos(selectedLanguage))
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, [selectedLanguage])
+
+		return (
+			<ul className="languages">
+				{languages.map((language, index) => {
+					return (
+						<li
+							key={index}
+							className={
+								language === selectedLanguage || language.toLowerCase() === queryParams
+									? 'selected'
+									: null
+							}
+							onClick={() => {
+								setSearchParams({ language: language.toLowerCase() })
+								dispatch(setSelectedLanguage(language))
+							}}
+						>
+							{language}
+						</li>
+					)
+				})}
+			</ul>
+		)
+	},
+	(prevProps, nextProps) => {
+		return prevProps.selectedLanguage === nextProps.selectedLanguage
+	}
+)
+export default SelectedLanguages
