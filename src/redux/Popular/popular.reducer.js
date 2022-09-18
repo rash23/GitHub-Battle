@@ -6,7 +6,7 @@ import {
 } from './popular.constants'
 
 const initialState = {
-	selectedLanguage: 'All',
+	selectedLanguage: '',
 	loading: false,
 	repos: [],
 	error: null,

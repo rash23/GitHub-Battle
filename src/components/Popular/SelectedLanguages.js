@@ -6,7 +6,7 @@ import { fetchPopularRepos } from '../../redux/Popular/popular.thunk'
 
 const languages = ['All', 'Javascript', 'Python', 'Java', 'Ruby', 'Scala']
 const SelectedLanguages = memo(
-	(props) => {
+	() => {
 		const dispatch = useDispatch()
 		const [searchParams, setSearchParams] = useSearchParams()
 		const queryParams = searchParams.get('language') || 'all'
