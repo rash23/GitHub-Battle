@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, Location } from 'react-router-dom'
 import PlayerInput from './PlayerInput'
 import PlayerPreview from './PlayerPreview'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,17 +8,23 @@ import {
 	setPlayerOneImage,
 	setPlayerTwoImage,
 } from '../../redux/Battle/battle.actions'
+import { RootState } from 'src/types'
+import { FC } from 'react'
 
-const Battle = () => {
+const Battle: FC = (): JSX.Element => {
 	const dispatch = useDispatch()
-	const playerOneName = useSelector((state) => state.battleReducer.playerOneName)
-	const playerTwoName = useSelector((state) => state.battleReducer.playerTwoName)
-	const playerOneImage = useSelector((state) => state.battleReducer.playerOneImage)
-	const playerTwoImage = useSelector((state) => state.battleReducer.playerTwoImage)
+	const playerOneName: string = useSelector((state: RootState) => state.battleReducer.playerOneName)
+	const playerTwoName: string = useSelector((state: RootState) => state.battleReducer.playerTwoName)
+	const playerOneImage: string = useSelector(
+		(state: RootState) => state.battleReducer.playerOneImage
+	)
+	const playerTwoImage: string = useSelector(
+		(state: RootState) => state.battleReducer.playerTwoImage
+	)
 
-	const location = useLocation()
+	const location: Location = useLocation()
 
-	const handleSubmit = (id, username) => {
+	const handleSubmit = (id: string, username: string) => {
 		if (id === 'playerOne') {
 			dispatch(setPlayerOneName(username))
 			dispatch(setPlayerOneImage('https://github.com/' + username + '.png?size=200'))
@@ -29,7 +35,7 @@ const Battle = () => {
 		}
 	}
 
-	const handleReset = (id) => {
+	const handleReset = (id: string) => {
 		if (id === 'playerOne') {
 			dispatch(setPlayerOneName(''))
 			dispatch(setPlayerOneImage(null))

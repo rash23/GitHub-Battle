@@ -1,39 +1,39 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
-const id = 'YOUR_CLIENT_ID'
-const sec = 'YOUR_SECRET_ID'
-const params = '?client_id=' + id + '?client_secret=' + sec
+const id: string = 'YOUR_CLIENT_ID'
+const sec: string = 'YOUR_SECRET_ID'
+const params: string = '?client_id=' + id + '?client_secret=' + sec
 
-const handleError = (error) => {
+const handleError = (error: string) => {
 	console.error(error)
 }
-const getProfile = (username) => {
+const getProfile = (username: string): Promise<any> => {
 	return axios
 		.get('https://api.github.com/users/' + username + params)
 		.then((user) => user.data)
 		.catch(handleError)
 }
 
-const getRepos = (username) => {
+const getRepos = (username: string): Promise<any> => {
 	return axios
 		.get('https://api.github.com/users/' + username + '/repos' + params)
 		.then((user) => user.data)
 		.catch(handleError)
 }
 
-const getStarCount = (repos) => {
-	return repos.reduce((count, repo) => {
+const getStarCount = (repos: { [key: string]: any }): number => {
+	return repos.reduce((count: number, repo: { [key: string]: any }) => {
 		return count + repo.stargazers_count
 	}, 0)
 }
 
-const calculateScore = (profile, repos) => {
+const calculateScore = (profile, repos: { [key: string]: any }): number => {
 	const followers = profile.followers
 	const totalStars = getStarCount(repos)
 	return followers * 3 + totalStars
 }
 
-const getUserData = (username) => {
+const getUserData = (username: string) => {
 	return axios.all([getProfile(username), getRepos(username)]).then(([profile, repos]) => {
 		return {
 			profile: profile,
@@ -48,19 +48,17 @@ const sortPlayers = (players) => {
 	})
 }
 
-export const battle = (players) => {
+export const battle = (players: string[]) => {
 	return axios.all(players.map(getUserData)).then(sortPlayers).catch(handleError)
 }
 
-battle(['rash23', 'anna'])
-
-export const fetchPopularReposHttpRequest = (language) => {
-	const encodeURI = window.encodeURI(
+export const fetchPopularReposHttpRequest = (language: string): Promise<any> => {
+	const encodeURI: string = window.encodeURI(
 		'https://api.github.com/search/repositories?q=stars:>1+language:' +
 			language +
 			'&sort=stars&order=desc&type=Repositories'
 	)
-	return axios.get(encodeURI).then((response) => {
+	return axios.get(encodeURI).then((response: AxiosResponse<any>): any => {
 		return response.data.items
 	})
 }

@@ -4,15 +4,20 @@ import {
 	FETCH_POPULAR_REPOS_SUCCESS,
 	FETCH_POPULAR_REPOS_FAILURE,
 } from './popular.constants'
+import { AnyAction } from 'redux'
+import { IPopularState } from './types/popular'
 
-const initialState = {
+const initialState: IPopularState = {
 	selectedLanguage: '',
 	loading: false,
 	repos: [],
 	error: null,
 }
 
-export const popularReducer = (state = initialState, action) => {
+export const popularReducer = (
+	state: IPopularState = initialState,
+	action: AnyAction
+): IPopularState => {
 	switch (action.type) {
 		case UPDATE_LANGUAGE:
 			return {

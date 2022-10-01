@@ -1,17 +1,20 @@
-import { memo, useEffect } from 'react'
+import { memo, useEffect, FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { setSelectedLanguage } from '../../redux/Popular/popular.actions'
 import { fetchPopularRepos } from '../../redux/Popular/popular.thunk'
+import { RootState } from 'src/types'
 
 const languages = ['All', 'Javascript', 'Python', 'Java', 'Ruby', 'Scala']
-const SelectedLanguages = memo(
-	() => {
+const SelectedLanguages: FC = memo(
+	(): JSX.Element => {
 		const dispatch = useDispatch()
 		const [searchParams, setSearchParams] = useSearchParams()
-		const queryParams = searchParams.get('language') || 'all'
+		const queryParams: string = searchParams.get('language') || 'all'
 
-		const selectedLanguage = useSelector((state) => state.popularReducer.selectedLanguage)
+		const selectedLanguage: string = useSelector(
+			(state: RootState) => state.popularReducer.selectedLanguage
+		)
 
 		useEffect(() => {
 			dispatch(fetchPopularRepos(selectedLanguage))
@@ -20,16 +23,16 @@ const SelectedLanguages = memo(
 
 		return (
 			<ul className="languages">
-				{languages.map((language, index) => {
+				{languages.map((language: string, index: number): JSX.Element => {
 					return (
 						<li
 							key={index}
 							className={
 								language === selectedLanguage || language.toLowerCase() === queryParams
 									? 'selected'
-									: null
+									: ''
 							}
-							onClick={() => {
+							onClick={(): void => {
 								setSearchParams({ language: language.toLowerCase() })
 								dispatch(setSelectedLanguage(language))
 							}}

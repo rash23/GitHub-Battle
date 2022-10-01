@@ -1,8 +1,16 @@
+import { FC, FormEvent } from 'react'
 import { useState } from 'react'
 
-const PlayerInput = (props) => {
+interface PlayerInputProps {
+	id: String
+	label: String
+	onSubmit: Function
+}
+
+const PlayerInput: FC = (props: PlayerInputProps): JSX.Element => {
 	const [username, setUsername] = useState('')
-	const handleSubmit = (event) => {
+
+	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		props.onSubmit(props.id, username)
 	}
