@@ -52,7 +52,7 @@ export const fetchResultBattleRequest = (): AnyAction => {
 	}
 }
 
-export const fetchResultBattleSuccess = (payload: string[]) => {
+export const fetchResultBattleSuccess = (payload: IProfile[]) => {
 	return {
 		type: FETCH_RESULT_BATTLE_SUCCESS,
 		payload,
