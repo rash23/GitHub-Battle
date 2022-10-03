@@ -3,7 +3,7 @@ export interface ILicense {
 }
 
 export interface IOwner {
-	[key: string]: string | null | boolean
+	[key: string]: string | boolean | null
 }
 
 export type ReposType = { [key: string]: string | null | boolean | string[] | IOwner | ILicense }

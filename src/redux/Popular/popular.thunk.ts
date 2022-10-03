@@ -7,7 +7,7 @@ import {
 import { fetchPopularReposHttpRequest } from '../../utils/api'
 import { addDispatch } from 'src/types'
 
-// import { ReposType } from './types'
+import { ReposType } from './types'
 
 export const fetchPopularRepos =
 	(language: string) =>
@@ -15,6 +15,6 @@ export const fetchPopularRepos =
 		dispatch(fetchPopularReposRequest())
 
 		return fetchPopularReposHttpRequest(language)
-			.then((data) => dispatch(fetchPopularReposSuccess(data)))
+			.then((data: ReposType[]) => dispatch(fetchPopularReposSuccess(data)))
 			.catch((error) => dispatch(fetchPopularReposFailure(error)))
 	}

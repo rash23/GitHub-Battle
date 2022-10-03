@@ -20,7 +20,7 @@ export const fetchPopularReposRequest = (): AnyAction => {
 	}
 }
 
-export const fetchPopularReposSuccess = (payload: ReposType): AnyAction => {
+export const fetchPopularReposSuccess = (payload: ReposType[]): AnyAction => {
 	return {
 		type: FETCH_POPULAR_REPOS_SUCCESS,
 		payload,
