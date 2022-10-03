@@ -10,3 +10,10 @@ export interface BattleStateProps {
 	infoPlayerTwo: null | string
 	error: null | string
 }
+export interface BattleProfile {
+	[key: string]: string | boolean | null
+}
+
+export interface BattleProfiles {
+	[key: string]: BattleProfile | number
+}

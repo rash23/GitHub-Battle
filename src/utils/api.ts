@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { ReposType } from 'src/redux/Popular/types'
-import { IProfile } from 'src/components/Battle/types'
+import { BattleProfiles, BattleProfile } from 'src/redux/Battle/types'
 
 const id: string = 'YOUR_CLIENT_ID'
 const sec: string = 'YOUR_SECRET_ID'
@@ -29,7 +29,7 @@ const getStarCount = (repos: { [key: string]: any }): number => {
 	}, 0)
 }
 
-const calculateScore = (profile: IProfile, repos: ReposType): number => {
+const calculateScore = (profile: BattleProfile, repos: ReposType): number => {
 	const followers: number = profile.followers
 	const totalStars: number = getStarCount(repos)
 	return followers * 3 + totalStars
@@ -44,7 +44,7 @@ const getUserData = (username: string) => {
 	})
 }
 
-const sortPlayers = (players: IProfile[]) => {
+const sortPlayers = (players: BattleProfiles[]) => {
 	return players.sort(function (a, b) {
 		return b.score - a.score
 	})

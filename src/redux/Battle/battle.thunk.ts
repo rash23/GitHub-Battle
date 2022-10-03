@@ -6,12 +6,12 @@ import {
 
 import { battle } from '../../utils/api'
 import { addDispatch } from 'src/types'
-import { IProfile } from 'src/components/Battle/types'
+import { BattleProfiles } from './types'
 
 export const fetchResultBattle = (playersArray: string[]) => (dispatch: addDispatch) => {
 	dispatch(fetchResultBattleRequest())
 
 	return battle(playersArray)
-		.then((data: IProfile[]) => dispatch(fetchResultBattleSuccess(data)))
+		.then((data: BattleProfiles[]) => dispatch(fetchResultBattleSuccess(data)))
 		.catch((error) => dispatch(fetchResultBattleFailure(error)))
 }

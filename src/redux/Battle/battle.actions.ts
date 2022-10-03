@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { IProfile } from 'src/components/Battle/types'
+import { BattleProfiles } from './types'
 import {
 	UPDATE_USERNAME,
 	UPDATE_PLAYER_ONE_NAME,
@@ -52,7 +52,7 @@ export const fetchResultBattleRequest = (): AnyAction => {
 	}
 }
 
-export const fetchResultBattleSuccess = (payload: IProfile[]) => {
+export const fetchResultBattleSuccess = (payload: BattleProfiles[]): AnyAction => {
 	return {
 		type: FETCH_RESULT_BATTLE_SUCCESS,
 		payload,
