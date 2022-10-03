@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux'
+import { BattleStateProps } from './types'
 import {
 	UPDATE_PLAYER_ONE_NAME,
 	UPDATE_PLAYER_TWO_NAME,
@@ -9,7 +11,7 @@ import {
 	UPDATE_USERNAME,
 } from './battle.constants'
 
-const initialState = {
+const initialState: BattleStateProps = {
 	username: '',
 	playerOneName: '',
 	playerTwoName: '',
@@ -19,9 +21,10 @@ const initialState = {
 	loserScore: null,
 	infoPlayerOne: null,
 	infoPlayerTwo: null,
+	error: null,
 }
 
-export const battleReducer = (state = initialState, action) => {
+export const battleReducer = (state = initialState, action: AnyAction) => {
 	switch (action.type) {
 		case UPDATE_USERNAME:
 			return {

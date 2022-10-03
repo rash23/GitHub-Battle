@@ -6,11 +6,12 @@ import {
 
 import { fetchPopularReposHttpRequest } from '../../utils/api'
 import { addDispatch } from 'src/types'
-import { AnyAction } from 'redux'
+
+// import { ReposType } from './types'
 
 export const fetchPopularRepos =
 	(language: string) =>
-	(dispatch: addDispatch): Promise<AnyAction> => {
+	(dispatch: addDispatch): Promise<any> => {
 		dispatch(fetchPopularReposRequest())
 
 		return fetchPopularReposHttpRequest(language)

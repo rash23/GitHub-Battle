@@ -5,6 +5,7 @@ import {
 	FETCH_POPULAR_REPOS_SUCCESS,
 	FETCH_POPULAR_REPOS_FAILURE,
 } from './popular.constants'
+import { ReposType } from './types'
 
 export const setSelectedLanguage = (payload: string): AnyAction => {
 	return {
@@ -19,7 +20,7 @@ export const fetchPopularReposRequest = (): AnyAction => {
 	}
 }
 
-export const fetchPopularReposSuccess = (payload): AnyAction => {
+export const fetchPopularReposSuccess = (payload: ReposType): AnyAction => {
 	return {
 		type: FETCH_POPULAR_REPOS_SUCCESS,
 		payload,

@@ -5,7 +5,7 @@ import {
 	FETCH_POPULAR_REPOS_FAILURE,
 } from './popular.constants'
 import { AnyAction } from 'redux'
-import { IPopularState } from './types/popular'
+import { IPopularState } from './types'
 
 const initialState: IPopularState = {
 	selectedLanguage: '',

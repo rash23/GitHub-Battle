@@ -1,11 +1,6 @@
 import { FC, FormEvent } from 'react'
 import { useState } from 'react'
-
-interface PlayerInputProps {
-	id: String
-	label: String
-	onSubmit: Function
-}
+import { PlayerInputProps } from './types'
 
 const PlayerInput: FC = (props: PlayerInputProps): JSX.Element => {
 	const [username, setUsername] = useState('')

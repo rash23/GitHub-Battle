@@ -45,6 +45,7 @@ const Battle: FC = (): JSX.Element => {
 			dispatch(setPlayerTwoImage(null))
 		}
 	}
+
 	return (
 		<div>
 			<div className="row">

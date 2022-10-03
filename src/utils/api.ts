@@ -1,4 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
+import { ReposType } from 'src/redux/Popular/types'
+import { IProfile } from 'src/components/Battle/types'
 
 const id: string = 'YOUR_CLIENT_ID'
 const sec: string = 'YOUR_SECRET_ID'
@@ -27,9 +29,9 @@ const getStarCount = (repos: { [key: string]: any }): number => {
 	}, 0)
 }
 
-const calculateScore = (profile, repos: { [key: string]: any }): number => {
-	const followers = profile.followers
-	const totalStars = getStarCount(repos)
+const calculateScore = (profile: IProfile, repos: ReposType): number => {
+	const followers: number = profile.followers
+	const totalStars: number = getStarCount(repos)
 	return followers * 3 + totalStars
 }
 
@@ -42,7 +44,7 @@ const getUserData = (username: string) => {
 	})
 }
 
-const sortPlayers = (players) => {
+const sortPlayers = (players: IProfile[]) => {
 	return players.sort(function (a, b) {
 		return b.score - a.score
 	})
@@ -58,7 +60,7 @@ export const fetchPopularReposHttpRequest = (language: string): Promise<any> => 
 			language +
 			'&sort=stars&order=desc&type=Repositories'
 	)
-	return axios.get(encodeURI).then((response: AxiosResponse<any>): any => {
+	return axios.get(encodeURI).then((response: AxiosResponse<any>): ReposType[] => {
 		return response.data.items
 	})
 }
