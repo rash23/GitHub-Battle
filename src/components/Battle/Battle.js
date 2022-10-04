@@ -7,14 +7,14 @@ import {
 	setPlayerTwoName,
 	setPlayerOneImage,
 	setPlayerTwoImage,
-} from '../../redux/Battle/battle.actions'
+} from '../../redux/Battle/battle.slice'
 
 const Battle = () => {
 	const dispatch = useDispatch()
-	const playerOneName = useSelector((state) => state.battleReducer.playerOneName)
-	const playerTwoName = useSelector((state) => state.battleReducer.playerTwoName)
-	const playerOneImage = useSelector((state) => state.battleReducer.playerOneImage)
-	const playerTwoImage = useSelector((state) => state.battleReducer.playerTwoImage)
+	const playerOneName = useSelector((state) => state.battle.playerOneName)
+	const playerTwoName = useSelector((state) => state.battle.playerTwoName)
+	const playerOneImage = useSelector((state) => state.battle.playerOneImage)
+	const playerTwoImage = useSelector((state) => state.battle.playerTwoImage)
 
 	const location = useLocation()
 

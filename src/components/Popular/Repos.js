@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux'
 import Loader from '../General/Loader'
 
 const Repos = () => {
-	const repos = useSelector((state) => state.popularReducer.repos)
-	const loading = useSelector((state) => state.popularReducer.loading)
+	const repos = useSelector((state) => state.popular.repos)
+	console.log(repos)
+	const loading = useSelector((state) => state.popular.loading)
 	return (
 		<ul className="popular-list">
 			{loading ? (
@@ -15,11 +16,7 @@ const Repos = () => {
 							<div className="popular-rank">#{index + 1}</div>
 							<ul className="space-list-items">
 								<li>
-									<img
-										className="avatar"
-										src={repo.owner.avatar_url}
-										alt={'Avatar for ' + repo.owner.login}
-									/>
+									<img className="avatar" src={repo.owner.avatar_url} alt={'Avatar for ' + repo.owner.login} />
 								</li>
 								<li>
 									<a href={repo.html_url}>{repo.name}</a>

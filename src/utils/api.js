@@ -43,6 +43,7 @@ const getUserData = (username) => {
 }
 
 const sortPlayers = (players) => {
+	console.log(players)
 	return players.sort(function (a, b) {
 		return b.score - a.score
 	})

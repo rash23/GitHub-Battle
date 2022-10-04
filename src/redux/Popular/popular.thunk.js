@@ -1,8 +1,4 @@
-import {
-	fetchPopularReposRequest,
-	fetchPopularReposSuccess,
-	fetchPopularReposFailure,
-} from './popular.actions'
+import { fetchPopularReposRequest, fetchPopularReposSuccess, fetchPopularReposFailure } from './popular.slice'
 
 import { fetchPopularReposHttpRequest } from '../../utils/api'
 

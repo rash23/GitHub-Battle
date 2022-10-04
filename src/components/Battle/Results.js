@@ -10,27 +10,25 @@ import {
 	setPlayerTwoName,
 	setPlayerOneImage,
 	setPlayerTwoImage,
-} from '../../redux/Battle/battle.actions'
+} from '../../redux/Battle/battle.slice'
 
 const Results = () => {
 	const dispatch = useDispatch()
-	const playerOneName = useSelector((state) => state.battleReducer.playerOneName)
-	const playerTwoName = useSelector((state) => state.battleReducer.playerTwoName)
-	const playerOneImage = useSelector((state) => state.battleReducer.playerOneImage)
-	const playerTwoImage = useSelector((state) => state.battleReducer.playerTwoImage)
-	const winnerScore = useSelector((state) => state.battleReducer.winnerScore)
-	const loserScore = useSelector((state) => state.battleReducer.loserScore)
-	const infoPlayerOne = useSelector((state) => state.battleReducer.infoPlayerOne)
-	const infoPlayerTwo = useSelector((state) => state.battleReducer.infoPlayerTwo)
-	const error = useSelector((state) => state.battleReducer.error)
+	const playerOneName = useSelector((state) => state.battle.playerOneName)
+	const playerTwoName = useSelector((state) => state.battle.playerTwoName)
+	const playerOneImage = useSelector((state) => state.battle.playerOneImage)
+	const playerTwoImage = useSelector((state) => state.battle.playerTwoImage)
+	const winnerScore = useSelector((state) => state.battle.winnerScore)
+	const loserScore = useSelector((state) => state.battle.loserScore)
+	const infoPlayerOne = useSelector((state) => state.battle.infoPlayerOne)
+	const infoPlayerTwo = useSelector((state) => state.battle.infoPlayerTwo)
+	const error = useSelector((state) => state.battle.error)
 
 	const location = useLocation()
 	useEffect(() => {
 		const searchParams = new URLSearchParams(location.search)
 
-		dispatch(
-			fetchResultBattle([searchParams.get('playerOneName'), searchParams.get('playerTwoName')])
-		)
+		dispatch(fetchResultBattle([searchParams.get('playerOneName'), searchParams.get('playerTwoName')]))
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location.search])
 

@@ -1,8 +1,4 @@
-import {
-	fetchResultBattleRequest,
-	fetchResultBattleSuccess,
-	fetchResultBattleFailure,
-} from './battle.actions'
+import { fetchResultBattleRequest, fetchResultBattleSuccess, fetchResultBattleFailure } from './battle.slice'
 
 import { battle } from '../../utils/api'
 
