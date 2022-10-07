@@ -1,17 +1,14 @@
-import {
-	fetchResultBattleRequest,
-	fetchResultBattleSuccess,
-	fetchResultBattleFailure,
-} from './battle.actions'
-
+import { fetchResultBattleRequest, fetchResultBattleSuccess, fetchResultBattleFailure } from './battle.slice'
 import { battle } from '../../utils/api'
-import { addDispatch } from 'src/types'
 import { BattleProfiles } from './types'
+import { AppDispatch, AppThunk } from 'src/types'
 
-export const fetchResultBattle = (playersArray: string[]) => (dispatch: addDispatch) => {
-	dispatch(fetchResultBattleRequest())
+export const fetchResultBattle: any =
+	(playersArray: string[]): AppThunk =>
+	(dispatch: AppDispatch): Promise<any> => {
+		dispatch(fetchResultBattleRequest())
 
-	return battle(playersArray)
-		.then((data: BattleProfiles[]) => dispatch(fetchResultBattleSuccess(data)))
-		.catch((error) => dispatch(fetchResultBattleFailure(error)))
-}
+		return battle(playersArray)
+			.then((data: BattleProfiles[]) => dispatch(fetchResultBattleSuccess(data)))
+			.catch((error: string) => dispatch(fetchResultBattleFailure(error)))
+	}

@@ -2,7 +2,7 @@ import Loader from '../General/Loader'
 import { FC } from 'react'
 import { PlayerProps } from './types'
 
-const Player: FC = (props: PlayerProps): JSX.Element => {
+const Player: FC<PlayerProps> = (props: PlayerProps): JSX.Element => {
 	return props.info ? (
 		<div>
 			<ul className="space-list-items">

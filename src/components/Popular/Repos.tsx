@@ -1,14 +1,11 @@
 import { useSelector } from 'react-redux'
-import { FC } from 'react'
 import Loader from '../General/Loader'
 import { RootState } from 'src/types'
 import { ReposType } from 'src/redux/Popular/types'
 
-const Repos: FC = (): JSX.Element => {
-	const repos: ReposType[] = useSelector(
-		(state: RootState): ReposType[] => state.popularReducer.repos
-	)
-	const loading = useSelector((state: RootState) => state.popularReducer.loading)
+const Repos = (): JSX.Element => {
+	const repos: ReposType[] = useSelector((state: RootState): ReposType[] => state.popular.repos)
+	const loading = useSelector((state: RootState) => state.popular.loading)
 	return (
 		<ul className="popular-list">
 			{loading ? (
@@ -20,11 +17,7 @@ const Repos: FC = (): JSX.Element => {
 							<div className="popular-rank">#{index + 1}</div>
 							<ul className="space-list-items">
 								<li>
-									<img
-										className="avatar"
-										src={repo.owner.avatar_url}
-										alt={'Avatar for ' + repo.owner.login}
-									/>
+									<img className="avatar" src={repo.owner.avatar_url} alt={'Avatar for ' + repo.owner.login} />
 								</li>
 								<li>
 									<a href={repo.html_url}>{repo.name}</a>

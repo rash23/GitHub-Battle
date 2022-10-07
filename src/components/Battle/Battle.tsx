@@ -7,20 +7,16 @@ import {
 	setPlayerTwoName,
 	setPlayerOneImage,
 	setPlayerTwoImage,
-} from '../../redux/Battle/battle.actions'
+} from '../../redux/Battle/battle.slice'
 import { RootState } from 'src/types'
 import { FC } from 'react'
 
 const Battle: FC = (): JSX.Element => {
 	const dispatch = useDispatch()
-	const playerOneName: string = useSelector((state: RootState) => state.battleReducer.playerOneName)
-	const playerTwoName: string = useSelector((state: RootState) => state.battleReducer.playerTwoName)
-	const playerOneImage: string = useSelector(
-		(state: RootState) => state.battleReducer.playerOneImage
-	)
-	const playerTwoImage: string = useSelector(
-		(state: RootState) => state.battleReducer.playerTwoImage
-	)
+	const playerOneName: string = useSelector((state: RootState): string => state.battle.playerOneName)
+	const playerTwoName: string = useSelector((state: RootState): string => state.battle.playerTwoName)
+	const playerOneImage: string = useSelector((state: RootState): string => state.battle.playerOneImage)
+	const playerTwoImage: string = useSelector((state: RootState): string => state.battle.playerTwoImage)
 
 	const location: Location = useLocation()
 
@@ -38,11 +34,11 @@ const Battle: FC = (): JSX.Element => {
 	const handleReset = (id: string) => {
 		if (id === 'playerOne') {
 			dispatch(setPlayerOneName(''))
-			dispatch(setPlayerOneImage(null))
+			dispatch(setPlayerOneImage(''))
 		}
 		if (id === 'playerTwo') {
 			dispatch(setPlayerTwoName(''))
-			dispatch(setPlayerTwoImage(null))
+			dispatch(setPlayerTwoImage(''))
 		}
 	}
 

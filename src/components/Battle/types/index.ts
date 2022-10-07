@@ -1,15 +1,9 @@
+import { InfoPlayer } from 'src/redux/Battle/types'
+
 export interface PlayerProps {
-	info: {
-		name: string
-		location: string
-		company: string
-		followers: string
-		following: string
-		public_repos: string
-		blog: string
-	}
-	label: string
-	score: number
+	info: InfoPlayer | null
+	label: string | null
+	score: number | null
 }
 
 export interface PlayerInputProps {

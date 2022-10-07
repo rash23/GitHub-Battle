@@ -3,10 +3,17 @@ export interface ILicense {
 }
 
 export interface IOwner {
-	[key: string]: string | boolean | null
+	avatar_url: string
+	login: string
 }
 
-export type ReposType = { [key: string]: string | null | boolean | string[] | IOwner | ILicense }
+export type ReposType = {
+	name: string
+	id: number
+	owner: IOwner
+	stargazers_count: number
+	html_url: string
+}
 
 export interface IPopularState {
 	selectedLanguage: string

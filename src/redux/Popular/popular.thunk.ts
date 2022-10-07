@@ -1,20 +1,13 @@
-import {
-	fetchPopularReposRequest,
-	fetchPopularReposSuccess,
-	fetchPopularReposFailure,
-} from './popular.actions'
-
+import { fetchPopularReposRequest, fetchPopularReposSuccess, fetchPopularReposFailure } from './popular.slice'
 import { fetchPopularReposHttpRequest } from '../../utils/api'
-import { addDispatch } from 'src/types'
+import { AppDispatch } from 'src/types'
 
-import { ReposType } from './types'
-
-export const fetchPopularRepos =
+export const fetchPopularRepos: any =
 	(language: string) =>
-	(dispatch: addDispatch): Promise<any> => {
+	(dispatch: AppDispatch): Promise<any> => {
 		dispatch(fetchPopularReposRequest())
 
 		return fetchPopularReposHttpRequest(language)
-			.then((data: ReposType[]) => dispatch(fetchPopularReposSuccess(data)))
-			.catch((error) => dispatch(fetchPopularReposFailure(error)))
+			.then((data) => dispatch(fetchPopularReposSuccess(data)))
+			.catch((error) => dispatch(fetchPopularReposFailure(error.message)))
 	}
