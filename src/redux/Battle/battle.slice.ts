@@ -1,6 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { BattleStateProps, BattleProfiles } from './types'
-import { PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: BattleStateProps = {
 	username: '',

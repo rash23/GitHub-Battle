@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IPopularState } from './types'
-import { ReposType } from './types'
+import { IPopularState, ReposType } from './types'
 
 const initialState: IPopularState = {
 	selectedLanguage: '',
